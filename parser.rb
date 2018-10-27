@@ -23,7 +23,7 @@ def dns_parser
   data = []
   products.map do |el|
     url = main_url + 'product' + el
-    response = Nokogiri::HTML(open(url, 'User-Agent' => @user_agent))
+    response = Nokogiri::HTML(open(url, {ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE}, 'User-Agent' => @user_agent))
     doc_name = response.css('.price-item-title').children
     name = "`#{doc_name.text}`" unless doc_name.text.nil?
     doc_price = response.css('.current-price-value')
