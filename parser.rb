@@ -58,7 +58,7 @@ Telegram::Bot::Client.run(TOKEN) do |bot|
     when '💲 Check Price'
       bot.api.send_message(
         chat_id: message.chat.id,
-        text: dns_parser,
+        text: dns_parser || 'nothing to say',
         parse_mode: 'Markdown',
         disable_web_page_preview: true
       )
