@@ -42,7 +42,7 @@ Telegram::Bot::Client.run(TOKEN) do |bot|
   bot.listen do |message|
 
     markup = Telegram::Bot::Types::ReplyKeyboardMarkup.new(
-      keyboard: ['Check Price'], resize_keyboard: true
+      keyboard: ['💲 Check Price'], resize_keyboard: true
     )
 
     case message.text
