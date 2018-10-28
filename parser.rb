@@ -26,8 +26,8 @@ def dns_parser
     # @code = HTTParty.get(url).code
     #
     # return unless @code == 200
-
-    response = Nokogiri::HTML(open(url))
+    content = open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'opera')
+    response = Nokogiri::HTML(content)
     doc_name = response.css('.price-item-title').children
     name = "`#{doc_name.text}`" unless doc_name.text.nil?
     doc_price = response.css('.current-price-value')
