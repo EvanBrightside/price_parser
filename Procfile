@@ -1,1 +1,1 @@
-bot: ruby parser.rb
+bot: ruby xml_parser.rb

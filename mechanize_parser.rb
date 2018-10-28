@@ -4,14 +4,12 @@ require 'nokogiri'
 require 'httparty'
 require 'open-uri'
 require 'mechanize'
-require 'active_support/all'
 
 TOKEN = '773528899:AAE5NKCJzEpep_2bpUY9cbUBi42N0hk7WDU'
 
 @user_agent = 'Chrome/19.0.1084.56 Safari/536.5 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/536.5 (KHTML, like Gecko)'
 
 def dns_parser
-  # ActiveSupport::TimeZone.new('Samara')
   base_url = 'https://www.dns-shop.ru'
   wishlist_url = base_url + '/profile/wishlist/?list_id=46c44e2b-bbca-4458-bb59-a89b99e2ce35'
   data = []
