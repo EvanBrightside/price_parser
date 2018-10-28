@@ -1,1 +1,1 @@
-bot: ruby parser.rb
+bot: ruby html_parser.rb
