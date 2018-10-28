@@ -3,6 +3,7 @@ require 'pry'
 require 'nokogiri'
 require 'httparty'
 require 'open-uri'
+require 'openssl'
 require 'mechanize'
 require 'active_support/all'
 
@@ -15,7 +16,7 @@ def dns_parser
   base_url = 'https://www.dns-shop.ru'
   wishlist_url = base_url + '/profile/wishlist/?list_id=46c44e2b-bbca-4458-bb59-a89b99e2ce35'
   data = []
-  response = Nokogiri::XML(open(wishlist_url))
+  response = Nokogiri::XML(open(wishlist_url, 'User-Agent' => 'firefox'))
   wish_list_products = response.css('.wishlist-products .wishlist-product')
   wish_list_products.each do |el|
     doc_title = el.at_css('.name')
