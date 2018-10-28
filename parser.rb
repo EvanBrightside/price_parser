@@ -9,7 +9,7 @@ TOKEN = '773528899:AAE5NKCJzEpep_2bpUY9cbUBi42N0hk7WDU'
 @user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5'
 
 def dns_parser
-  main_url = 'http://www.dns-shop.ru/'
+  main_url = 'https://www.dns-shop.ru/'
 
   products = [
     '/b53791c627593330/processor-amd-ryzen-7-2700x-oem/',
@@ -23,10 +23,9 @@ def dns_parser
   data = []
   products.map do |el|
     url = main_url + 'product' + el
-    uri = URI(url)
-    res = Net::HTTP.get_response(uri)
-    content = open(url) if res.is_a?(Net::HTTPSuccess)
-    response = Nokogiri::HTML(content)
+    # uri = URI(url)
+    # res = Net::HTTP.get_response(uri)
+    response = Nokogiri::HTML(open(url)) # if res.is_a?(Net::HTTPSuccess)
     doc_name = response.css('.price-item-title').children
     name = "`#{doc_name.text}`" unless doc_name.text.nil?
     doc_price = response.css('.current-price-value')
