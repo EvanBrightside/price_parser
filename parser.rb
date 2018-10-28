@@ -13,7 +13,7 @@ def dns_parser
   wishlist_url = base_url + '/profile/wishlist/?list_id=46c44e2b-bbca-4458-bb59-a89b99e2ce35'
 
   data = []
-  response = Nokogiri::XML(open(wishlist_url, 'User-Agent' => 'Chrome'))
+  response = Nokogiri::XML(open(wishlist_url))
   wish_list_products = response.css('.wishlist-products .wishlist-product')
   wish_list_products.map do |el|
     doc_title = el.at_css('.name')
