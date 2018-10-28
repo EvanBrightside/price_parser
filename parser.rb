@@ -3,6 +3,8 @@ require 'pry'
 require 'nokogiri'
 require 'httparty'
 require 'open-uri'
+require 'mechanize'
+require 'tzinfo'
 
 TOKEN = '773528899:AAE5NKCJzEpep_2bpUY9cbUBi42N0hk7WDU'
 
