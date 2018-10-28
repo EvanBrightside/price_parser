@@ -9,7 +9,6 @@ TOKEN = '773528899:AAE5NKCJzEpep_2bpUY9cbUBi42N0hk7WDU'
 @user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5'
 
 def dns_parser
-  binding.pry
   main_url = 'http://www.dns-shop.ru/'
 
   products = [
