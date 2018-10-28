@@ -23,8 +23,9 @@ def dns_parser
   data = []
   products.map do |el|
     url = main_url + 'product' + el
+    @code = HTTParty.get(url).code
 
-    return unless HTTParty.get(url).code == 200
+    return unless @code == 200
 
     response = Nokogiri::HTML(open(url, {ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE}))
     doc_name = response.css('.price-item-title').children
@@ -58,7 +59,7 @@ Telegram::Bot::Client.run(TOKEN) do |bot|
     when '💲 Check Price'
       bot.api.send_message(
         chat_id: message.chat.id,
-        text: dns_parser || 'nothing to say',
+        text: dns_parser || "code: #{@code}",
         parse_mode: 'Markdown',
         disable_web_page_preview: true
       )
