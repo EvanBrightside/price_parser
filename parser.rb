@@ -9,6 +9,7 @@ TOKEN = '773528899:AAE5NKCJzEpep_2bpUY9cbUBi42N0hk7WDU'
 @user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5'
 
 def dns_parser
+  binding.pry
   main_url = 'http://www.dns-shop.ru/'
 
   products = [
@@ -23,11 +24,9 @@ def dns_parser
   data = []
   products.map do |el|
     url = main_url + 'product' + el
-    content = open(
-      url,
-      ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE,
-      'User-Agent' => @user_agent
-    )
+    uri = URI(url)
+    res = Net::HTTP.get_response(uri)
+    content = open(url) if res.is_a?(Net::HTTPSuccess)
     response = Nokogiri::HTML(content)
     doc_name = response.css('.price-item-title').children
     name = "`#{doc_name.text}`" unless doc_name.text.nil?
